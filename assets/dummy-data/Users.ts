@@ -1,6 +1,11 @@
-import { IUser } from '../../components/ChatRoomItem';
+export interface IUser {
+  id: string;
+  name: string;
+  imageUri: string;
+  status?: string;
+}
 
-export default [
+const USERS: IUser[] =  [
   {
     id: 'u1',
     name: 'Vadim',
@@ -52,4 +57,6 @@ export default [
     name: 'Angelina Jolie',
     imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/4.jpg',
   },
-] as IUser[];
+];
+
+export default USERS;
