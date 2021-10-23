@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { FC, memo, useEffect } from 'react';
 
 import { StyleSheet } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -9,11 +9,13 @@ import CHAT_ROOM_DATA from '../assets/dummy-data/Chats';
 import Message from '../components/Message';
 import MessageInput from '../components/MessageInput';
 
-const ChatRoom = (props: RootTabScreenProps<'ChatRoom'>) => {
+const ChatRoom: FC<RootTabScreenProps<'ChatRoom'>> = () => {
   const route = useRoute<UseRouteType<'ChatRoom'>>();
   const navigation = useNavigation();
 
-  navigation.setOptions({title: 'Elon Mask'});
+  useEffect(() => {
+    navigation.setOptions({ title: 'Elon Mask' });
+  }, [route.params.id]);
 
   return (
     <SafeAreaView style={styles.container}>

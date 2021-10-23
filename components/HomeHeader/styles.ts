@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import Colors from '../../constants/Colors';
-
 export default StyleSheet.create({
   container: {
     position: 'absolute',
@@ -18,7 +16,6 @@ export default StyleSheet.create({
     borderRadius: 15,
   },
   title: {
-    color: Colors.static.black,
     fontSize: 20,
     fontWeight: 'bold',
   },

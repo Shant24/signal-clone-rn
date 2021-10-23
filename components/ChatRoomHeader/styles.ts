@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import Colors from '../../constants/Colors';
-
 export default StyleSheet.create({
   container: {
     position: 'relative',
@@ -19,7 +17,6 @@ export default StyleSheet.create({
   },
   title: {
     marginLeft: 45,
-    color: Colors.static.black,
     fontWeight: 'bold',
   },
   rightContainer: {
