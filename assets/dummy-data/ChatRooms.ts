@@ -1,6 +1,19 @@
-import { IChatRoom } from '../../components/ChatRoomItem';
+import { IUser } from './Users';
 
-export default [
+export interface ILastMessage {
+  id: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface IChatRoom {
+  id: string;
+  users: IUser[];
+  lastMessage: ILastMessage;
+  newMessages: number;
+}
+
+const CHAT_ROOMS: IChatRoom[] = [
   {
     id: '1',
     users: [
@@ -190,4 +203,6 @@ export default [
     },
     newMessages: 24,
   },
-] as IChatRoom[];
+];
+
+export default CHAT_ROOMS;

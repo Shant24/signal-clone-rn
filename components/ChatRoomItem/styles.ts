@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import Colors from '../../constants/Colors';
+
 export default StyleSheet.create({
   pageContainer: {
     flex: 1,
@@ -29,10 +31,10 @@ export default StyleSheet.create({
     backgroundColor: '#3777f0',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'white',
+    borderColor: Colors.static.white,
   },
   badgeText: {
-    color: 'white',
+    color: Colors.static.white,
     fontSize: 12,
   },
   rightContainer: {
@@ -49,9 +51,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   text: {
-    color: 'grey',
-  },
-  messageText: {
-    color: 'grey',
+    color: Colors.static.grey,
   },
 });

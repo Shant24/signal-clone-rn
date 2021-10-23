@@ -12,4 +12,9 @@ web-build/
 # macOS
 .DS_Store
 
+# editor
+.idea
+
+# lock files
 yarn.lock
+package-lock.json
