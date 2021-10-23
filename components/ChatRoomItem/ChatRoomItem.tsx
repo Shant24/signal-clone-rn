@@ -1,19 +1,20 @@
-import * as React from 'react';
+import React from 'react';
 
 import { Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 import { IChatRoom } from '../../assets/dummy-data/ChatRooms';
-import { Text, View } from '../Themed';
+import { Pressable, Text, View } from '../Themed';
 
 interface IChatRoomItemProps {
   chatRoom: IChatRoom;
-  handleOpenChatRoom: (room: IChatRoom) => void;
 }
 
-const ChatRoomItem = ({ chatRoom, handleOpenChatRoom }: IChatRoomItemProps) => {
+const ChatRoomItem = ({ chatRoom }: IChatRoomItemProps) => {
   const { users, lastMessage, newMessages } = chatRoom;
+  const navigation = useNavigation();
+
   const user = users[1];
   const date = new Date(lastMessage.createdAt).toLocaleTimeString('en-EN', {
     hour12: true,
@@ -21,8 +22,12 @@ const ChatRoomItem = ({ chatRoom, handleOpenChatRoom }: IChatRoomItemProps) => {
     timeStyle: 'short',
   });
 
+  const handlePress = () => {
+    navigation.navigate('ChatRoom', { id: chatRoom.id });
+  };
+
   return (
-    <TouchableOpacity style={styles.container} onPress={() => handleOpenChatRoom(chatRoom)}>
+    <Pressable style={styles.container} onPress={handlePress}>
       <View style={styles.leftContainer}>
         <Image source={{ uri: user.imageUri }} style={styles.image} />
 
@@ -44,7 +49,7 @@ const ChatRoomItem = ({ chatRoom, handleOpenChatRoom }: IChatRoomItemProps) => {
           {lastMessage.content}
         </Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

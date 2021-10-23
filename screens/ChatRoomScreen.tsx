@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { StyleSheet } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { FlatList, SafeAreaView } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
+import { RootTabScreenProps, UseRouteType } from '../types/navigationTypes';
 import CHAT_ROOM_DATA from '../assets/dummy-data/Chats';
 import Message from '../components/Message';
 import MessageInput from '../components/MessageInput';
 
 const ChatRoom = (props: RootTabScreenProps<'ChatRoom'>) => {
+  const route = useRoute<UseRouteType<'ChatRoom'>>();
+  const navigation = useNavigation();
+
+  navigation.setOptions({title: 'Elon Mask'});
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -33,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatRoom;
+export default memo(ChatRoom);
