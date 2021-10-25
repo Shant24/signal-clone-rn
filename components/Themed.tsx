@@ -14,6 +14,7 @@ import {
   TextInput as DefaultTextInput,
   TouchableOpacity as DefaultTouchableOpacity,
   View as DefaultView,
+  ActivityIndicator as DefaultActivityIndicator
 } from 'react-native';
 
 import useThemeColor from '../hooks/useThemeColor';
@@ -25,6 +26,7 @@ type ThemeProps = {
 };
 
 export type TextProps = ThemeProps & DefaultText['props'];
+export type ActivityIndicatorProps = ThemeProps & DefaultActivityIndicator['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 export type KeyboardAvoidingViewProps = ThemeProps & DefaultKeyboardAvoidingView['props'];
 export type SafeAreaViewProps = ThemeProps & DefaultSafeAreaView['props'];
@@ -37,6 +39,12 @@ export const Text = ({ ref, style, lightColor, darkColor, ...otherProps }: TextP
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
   return <DefaultText style={[{ color }, style]} {...otherProps} />;
+};
+
+export const ActivityIndicator = ({ ref, lightColor, darkColor, ...otherProps }: ActivityIndicatorProps) => {
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+
+  return <DefaultActivityIndicator color={color} {...otherProps} />;
 };
 
 export const View = ({ style, lightColor, darkColor, ...otherProps }: ViewProps) => {
@@ -65,8 +73,9 @@ export const FlatList = ({ style, lightColor, darkColor, ...otherProps }: FlatLi
 
 export const TextInput = ({ style, lightColor, darkColor, ...otherProps }: TextInputProps) => {
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-  return <DefaultTextInput style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <DefaultTextInput style={[{ backgroundColor, color }, style]} {...otherProps} />;
 };
 
 export const Pressable = ({ style, lightColor, darkColor, ...otherProps }: PressableProps) => {
