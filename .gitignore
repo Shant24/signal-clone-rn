@@ -14,7 +14,11 @@ web-build/
 
 # editor
 .idea
+.vscode
 
 # lock files
 yarn.lock
 package-lock.json
+
+.env
+.env.local
